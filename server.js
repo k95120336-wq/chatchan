@@ -26,7 +26,7 @@ if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR);
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5e6 } });
 
 // ─── Static ───
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30m', etag: true }));
+app.use(express.static(__dirname, { maxAge: '30m', etag: true }));
 
 // ─── Serve uploaded images ───
 app.get('/img/:filename', (req, res) => {
