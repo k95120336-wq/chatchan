@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>尝尝好吃吗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="screen">
+    <div class="login-box">
+      <h1 class="title">尝尝好吃吗</h1>
+      <p class="subtitle">私人聊天室</p>
+
+      <div class="avatar-picker">
+        <div class="avatar-preview" id="avatar-preview" onclick="document.getElementById('avatar-input').click()">
+          <span id="avatar-text">+</span>
+        </div>
+        <input type="file" id="avatar-input" accept="image/*" hidden>
+        <span class="avatar-hint">点击设置头像</span>
+      </div>
+
+      <div class="form-group">
+        <label>昵称</label>
+        <input type="text" id="nickname-input" placeholder="给自己取个名字吧" maxlength="20">
+      </div>
+
+      <div class="form-group">
+        <label>房间密码</label>
+        <input type="password" id="password-input" placeholder="输入房间密码">
+      </div>
+
+      <button id="login-btn" class="btn-primary">进入聊天室</button>
+      <p id="login-error" class="error-msg"></p>
+    </div>
+  </div>
+
+  <!-- Chat Screen -->
+  <div id="chat-screen" class="screen hidden">
+    <div class="chat-header">
+      <span class="chat-title">尝尝好吃吗</span>
+      <span class="online-count" id="online-count">0 人在线</span>
+    </div>
+
+    <div id="messages-container" class="messages"></div>
+
+    <!-- Reply indicator -->
+    <div id="reply-indicator" class="reply-indicator hidden">
+      <span id="reply-text">回复</span>
+      <button id="cancel-reply" class="cancel-reply">✕</button>
+    </div>
+
+    <div class="input-area">
+      <button id="image-btn" class="icon-btn" title="发送图片">🖼️</button>
+      <input type="file" id="image-input" accept="image/*" hidden>
+      <textarea id="message-input" rows="1" placeholder="说点什么..." maxlength="2000"></textarea>
+      <button id="send-btn" class="btn-send">发送</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
